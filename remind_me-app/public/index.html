@@ -4,8 +4,10 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!--Add CSS and JavaScript files-->
-  <title>Document</title>
+  <!--Add CSS and JavaScript files and Favicon-->
+  <link rel="stylesheet" href="../src/index.css">
+  <link rel="favicon" href="./favicon.ico">
+  <title>RemindMe</title>
 </head>
 <body>
   <h1>Remind Me</h1>
@@ -16,6 +18,7 @@
     Date/Time: <input type="text" name="date_time"><br><br>
     Email: <input type="text" name="user_email"><br><br>
   </form>
+  
   <!--Submit button-->
   <button onclick="getDataFromForm()">Submit</button>
 
@@ -25,19 +28,19 @@
   <br><br>
 
   <script>
-    function getDataFromForm(){
-      var form = document.getElementById("form1");
-      const output=[];
+    function getDataFromForm() {
+      var form1 = document.getElementById("form1");
+      const user_input=[];
       var i;
-      for(i=0; i< form.length; i++){
-        output.push(form.elements[i].value);
+      for(i=0; i < form1.length; i++){
+        user_input.push(form1.elements[i].value);
       }
-      document.getElementById("demo").innerHTML = output;
+      document.getElementById("demo").innerHTML = user_input;
     }
   </script>
 
 </body>
 <footer>
-  Author: Nathan Crowley - <a href="https://github.com/NathanCrowley/RemindMe/tree/main/remind_me-app">GitHub Repository</a> - Created: 16/11/2022.
+  <!-- Author: Nathan Crowley - <a href="https://github.com/NathanCrowley/RemindMe/tree/main/remind_me-app">GitHub Repository</a> - Created: <div id="date-created"></div> <script>document.getElementById("date-created").innerHTML= new Date();</script>. -->
 </footer>
 </html>
