@@ -5,6 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!--Add CSS and JavaScript files and Favicon-->
+  <script src="https://smtpjs.com/v3/smtp.js"></script>
   <link rel="stylesheet" href="../src/index.css">
   <link rel="favicon" href="./favicon.ico">
   <title>RemindMe</title>
@@ -12,32 +13,36 @@
 <body>
   <h1>Remind Me</h1>
 
-  <!--Get User Input-->
-  <form id="form1" action="">
-    What to Remind: <input type="text" name="what_to_remind" placeholder="Reminder"><br><br>
-    Date/Time: <input type="datetime-local" name="date_time"><br><br>
-    Email: <input type="text" name="user_email" placeholder="Reciever Email"><br><br>
-    Name: <input type="text" name="user_name" placeholder="User Name"><br><br>
+  <!-- Get User Input -->
+  <form id="emailForm" action="#">
+    What to Remind: <input type="text" id="body" placeholder="Reminder"><br><br>
+    Date/Time: <input type="datetime-local" id="date_time"><br><br>
+    Email: <input type="email" id="email" placeholder="Reciever Email"><br><br>
+    Name: <input type="text" id="name" placeholder="User Name"><br><br>
   </form>
   
   <!--Submit button-->
-  <button onclick="getDataFromForm()">Submit</button>
+  <button onclick="sendEmail()">Submit</button>
 
-  <!--Test JS got User Input-->
-  <div>Test JS can get info from user-input:</div><br>
-  <div id="demo"></div>
-  <br><br>
-
+  <!--JS to Send Email-->
   <script>
-    function getDataFromForm() {
-      var form1 = document.getElementById("form1");
-      const user_input=[];
-      var i;
-      for(i=0; i < form1.length; i++){
-        user_input.push(form1.elements[i].value);
-        user_input.push("<br>");
-      }
-      document.getElementById("demo").innerHTML = user_input;
+    function sendEmail(){
+      // get input data
+      const form = document.getElementById("emailForm"),
+      name = document.getElementById("name"),
+      email = document.getElementById("email"),
+      body = document.getElementById("body");
+      
+      // send email 
+      Email.send({
+        SecureToken : "8c2798ce-3285-4bdf-9d1a-8bbf75d90f97",
+        To : email.value,
+        From : "remindme.application2022@gmail.com",
+        Subject : "RemindMe Application",
+        Body : body.value
+      }).then(
+        message => alert(message)
+      );
     }
   </script>
 
