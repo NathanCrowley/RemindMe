@@ -4,9 +4,40 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!--Add CSS and JavaScript files-->
   <title>Document</title>
 </head>
 <body>
   <h1>Remind Me</h1>
+
+  <!--Get User Input-->
+  <form id="form1" action="">
+    What to Remind: <input type="text" name="what_to_remind"><br><br>
+    Date/Time: <input type="text" name="date_time"><br><br>
+    Email: <input type="text" name="user_email"><br><br>
+  </form>
+  <!--Submit button-->
+  <button onclick="getDataFromForm()">Submit</button>
+
+  <!--Test JS got User Input-->
+  <div>Test JS can get info from user-input:</div><br>
+  <div id="demo"></div>
+  <br><br>
+
+  <script>
+    function getDataFromForm(){
+      var form = document.getElementById("form1");
+      const output=[];
+      var i;
+      for(i=0; i< form.length; i++){
+        output.push(form.elements[i].value);
+      }
+      document.getElementById("demo").innerHTML = output;
+    }
+  </script>
+
 </body>
+<footer>
+  Author: Nathan Crowley - <a href="https://github.com/NathanCrowley/RemindMe/tree/main/remind_me-app">GitHub Repository</a> - Created: 16/11/2022.
+</footer>
 </html>
