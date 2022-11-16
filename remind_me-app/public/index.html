@@ -14,9 +14,10 @@
 
   <!--Get User Input-->
   <form id="form1" action="">
-    What to Remind: <input type="text" name="what_to_remind"><br><br>
-    Date/Time: <input type="text" name="date_time"><br><br>
-    Email: <input type="text" name="user_email"><br><br>
+    What to Remind: <input type="text" name="what_to_remind" placeholder="Reminder"><br><br>
+    Date/Time: <input type="datetime-local" name="date_time"><br><br>
+    Email: <input type="text" name="user_email" placeholder="Reciever Email"><br><br>
+    Name: <input type="text" name="user_name" placeholder="User Name"><br><br>
   </form>
   
   <!--Submit button-->
@@ -34,6 +35,7 @@
       var i;
       for(i=0; i < form1.length; i++){
         user_input.push(form1.elements[i].value);
+        user_input.push("<br>");
       }
       document.getElementById("demo").innerHTML = user_input;
     }
