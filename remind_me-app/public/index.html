@@ -6,47 +6,83 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!--Add CSS and JavaScript files and Favicon-->
   <script src="https://smtpjs.com/v3/smtp.js"></script>
-  <link rel="stylesheet" href="../src/index.css">
+  <link rel="stylesheet" href="../src/App.css">
   <link rel="favicon" href="./favicon.ico">
   <title>RemindMe</title>
-</head>
-<body>
-  <h1>Remind Me</h1>
 
-  <!-- Get User Input -->
-  <form id="emailForm" action="#">
-    What to Remind: <input type="text" id="body" placeholder="Reminder"><br><br>
-    Date/Time: <input type="datetime-local" id="date_time"><br><br>
-    Email: <input type="email" id="email" placeholder="Reciever Email"><br><br>
-    Name: <input type="text" id="name" placeholder="User Name"><br><br>
-  </form>
-  
-  <!--Submit button-->
-  <button onclick="sendEmail()">Submit</button>
-
-  <!--JS to Send Email-->
-  <script>
-    function sendEmail(){
-      // get input data
-      const form = document.getElementById("emailForm"),
-      name = document.getElementById("name"),
-      email = document.getElementById("email"),
-      body = document.getElementById("body");
-      
-      // send email 
-      Email.send({
-        SecureToken : "8c2798ce-3285-4bdf-9d1a-8bbf75d90f97",
-        To : email.value,
-        From : "remindme.application2022@gmail.com",
-        Subject : "RemindMe Application",
-        Body : body.value
-      }).then(
-        message => alert(message)
-      );
+  <style>
+    h1{
+      text-align: center;
     }
-  </script>
+    input[type=text], input[type=email]{
+      width: 100%;
+      padding: 12px 20px;
+      margin: 8px 0;
+      display: inline-block;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
 
-</body>
+    button{
+      width: 100%;
+      background-color: #4CAF50;
+      color: white;
+      padding: 14px 20px;
+      margin: 8px 0;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    div {
+      text-align: center;
+      margin: 0% 15% 50% 15%;
+      border-radius: 5px;
+      background-color: #f2f2f2;
+      padding: 20px;
+    }
+  </style>
+
+</head>
+  <body>
+    <h1>Remind Me</h1>
+    <div>
+      <form id="emailForm" action="#">
+        <input type="text" id="body" placeholder="What to Remember..."><br><br>
+        <!-- Date/Time: <input type="datetime-local" id="date_time"><br><br> -->
+        <input type="email" id="email" placeholder="Reciever Email.."><br><br>
+        <!-- <input type="text" id="name" placeholder="User Name..."><br><br> -->
+      </form>
+      <button onclick="sendEmail()">Submit</button>
+
+      <!--JS to Send Email-->
+      <script>
+        function sendEmail(){
+          // get input data
+          const form = document.getElementById("emailForm"),
+          name = "User",
+          email = document.getElementById("email"),
+          body = document.getElementById("body");
+          
+          // send email 
+          Email.send({
+            SecureToken : "8c2798ce-3285-4bdf-9d1a-8bbf75d90f97",
+            To : email.value,
+            From : "remindme.application2022@gmail.com",
+            Subject : "RemindMe Application",
+            Body : body.value
+          }).then(
+            message => alert(message)
+          );
+        }
+      </script>
+    </div>
+  </body>
 <footer>
   <!-- Author: Nathan Crowley - <a href="https://github.com/NathanCrowley/RemindMe/tree/main/remind_me-app">GitHub Repository</a> - Created: <div id="date-created"></div> <script>document.getElementById("date-created").innerHTML= new Date();</script>. -->
 </footer>
